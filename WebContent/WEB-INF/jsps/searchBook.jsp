@@ -7,25 +7,35 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Search For a Book</title>
+<link rel="stylesheet" href="<c:url value="/css/style.css" />">
 </head>
 <body>
-<h1>Search Books</h1>
+	<div class="header"> 
+		<center><h1>Welcome to ReadIt</h1><h2>The Book Wishlist App</h2></center>
+	</div>
+	<h2>Search Books</h2>
+	
+	<c:url var="url" value="/searchBook" />
+	<form:form commandName="livre" method="post" action="${url}">
+		Genre: <form:select path="genre" items="${livre.genres}" />  <input type="submit" value="Search" />
+	</form:form>
 
-<c:url var="url" value="/searchBook" />
-<form:form commandName="book" method="post" action="${url}">
-	Genre: <form:select path="genre" items="${book.genres}" /><br>
 	<br>
-	<input type="submit" value="Search" />
-</form:form>
+	<div class="results"><h3>Results:</h3>
+		<c:forEach items="${booklist}" var="livre">
+			<h3>${livre.name}, ${livre.author}, ${livre.genre} </h3>
+		</c:forEach> 
+	</div>
+	<p>
+		<c:url value="/addBook" var="url1" />
+		<a href="${url1}">Add a Book</a>
+	</p>
+	
+	<p>
+		<c:url value="/home" var="url" />
+		<a href="${url}">Back to Home</a>
+	</p>
 
-
-<c:forEach items="${booklist}" var="book">
-	<h1>${book.name}, ${book.author}, ${book.genre} </h1>
-</c:forEach> 
-
-<p>
-	<a href="<c:url value="/" />">Add Book</a>
-</p>
 
 </body>
 </html>

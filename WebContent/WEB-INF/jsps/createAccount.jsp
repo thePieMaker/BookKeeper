@@ -12,6 +12,10 @@
 
 </head>
 <body>
+<div class="header"> 
+		<center><h1>Welcome to ReadIt</h1><h2>The Book Wishlist App</h2></center>
+	</div>
+<h1>Enter your information to create an account</h1>
 <div id="error"></div>
 	<c:url value="/register" var="url"/>
 	<form name="form" method="post" action="${url}" onsubmit="return verify()">	

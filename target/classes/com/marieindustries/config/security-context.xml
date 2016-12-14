@@ -16,6 +16,17 @@
 	</security:authentication-manager>
 	<security:http use-expressions="true">
 		<security:intercept-url access="isAuthenticated()" pattern="/secure"/>
+		<security:intercept-url access="isAuthenticated()" pattern="/home"/>
+		<security:intercept-url access="isAuthenticated()" pattern="/addBook"/>
+		<security:intercept-url access="isAuthenticated()" pattern="/searchBook"/>
+		<security:intercept-url access="isAuthenticated()" pattern="/savebook"/>
+		<security:intercept-url access="isAuthenticated()" pattern="/view"/>
+		<security:intercept-url access="isAuthenticated()" pattern="/editLivre/**"/>
+		<security:intercept-url access="isAuthenticated()" pattern="/deleteLivre/**"/>
+		<security:intercept-url access="permitAll" pattern="savebook"/>
+		
+		<security:intercept-url access="permitAll" pattern="/logout"/>
+		
 
 		<security:intercept-url access="permitAll" pattern="/css/**"/>
 		
@@ -27,13 +38,9 @@
 		
 		<security:intercept-url access="permitAll" pattern="/index"/>
 		
-		<security:intercept-url access="permitAll" pattern="/addBook"/>
-		
-		<security:intercept-url access="permitAll" pattern="/searchBook"/>
-		
 		<security:intercept-url access="permitAll" pattern="/register" />
-		<security:intercept-url access="permitAll" pattern="/createAccount" />
 		
+		<security:intercept-url access="permitAll" pattern="/createAccount" />
 		
 		<security:intercept-url access="denyAll" pattern="/**"/>
 

@@ -1,7 +1,4 @@
 @CHARSET "ISO-8859-1";
-#error{
-		color:red;
-	}
 body
 {
 	background-color: lightblue;
@@ -11,12 +8,15 @@ body
 .header{
 	font-family: Copperplate, "Copperplate Gothic Light", fantasy;
 }
-
-.results{
-	border:3px solid black;
+th{
+	background-color: #ddd;
 }
 
-#viewTable{
-	border:2px solid black;
-	padding: 9px;
+table, td, th {    
+    border: 2px solid black;
+    text-align: left;
+}
+th, tr, td {
+    padding: 15px;
+    border: 2px solid black;
 }

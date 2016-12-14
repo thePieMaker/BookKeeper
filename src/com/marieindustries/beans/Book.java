@@ -2,16 +2,29 @@ package com.marieindustries.beans;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
+@Table(name = "book", uniqueConstraints = @UniqueConstraint(columnNames = { "username" }) )
+
 public class Book implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue
-	private int id;
+	@GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
+	@Column(name = "book_id", unique = true, nullable = false)
+	private Integer id;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "username", nullable = false)
+	private User user;
+	@Column(name = "name", nullable = false, length = 45)
 	private String name;
 	private String author;
 	private String genre;
@@ -22,29 +35,27 @@ public class Book implements Serializable{
 	
 	public Book(){}
 
-	public Book(String name, String author, String genre) {
+	public Book(String name, String author) {
 		super();
 		this.name = name;
 		this.author = author;
-		this.genre = genre;
 	}
-	
-	
 
-	public Book(String name, String author, String genre, String rating, boolean completed) {
+	public Book(String name, String author, String genre, String rating, boolean completed, User user) {
 		super();
 		this.name = name;
 		this.author = author;
 		this.genre = genre;
 		this.rating = rating;
 		this.completed = completed;
+		this.user = user;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -98,6 +109,14 @@ public class Book implements Serializable{
 
 	public void setCompleted(boolean completed) {
 		this.completed = completed;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	

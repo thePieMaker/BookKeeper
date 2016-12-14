@@ -1,0 +1,24 @@
+@CHARSET "ISO-8859-1";
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+body
+{
+	background-color: lightblue;
+	font: arial, sans-serif;
+}
+h1 {
+	
+}
+
+#createAccount
+{
+	text-align: center;
+	color: green;
+}
+.header{
+	font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+	background-image: url("../images/background.jpg");
+}
